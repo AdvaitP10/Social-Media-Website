@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 
 const server = http.createServer(app);
 
-mongoose.connect("mongodb+srv://advaitpatole10:Advait%40253@cluster0.3ltpsez.mongodb.net/?retryWrites=true&w=majority")
+mongoose.connect(process.env.MONGO_URL)
 .then(()=>{
     server.listen(port, ()=>{
         console.log("server started");
