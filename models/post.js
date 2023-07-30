@@ -4,20 +4,22 @@ const postSchema = new mongoose.Schema({
     media: {
         type: String,
         trim: true,
+        required: true
     },
     user: {
-        type: mongoose.SchemaType.objectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User",
+        required: true
     },
     likes: [
         {
-            type: mongoose.SchemaType.objectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: "Like"
         }
     ],
     comment: [
         {
-            type: mongoose.SchemaType.objectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: "Comment"
         }
     ]
@@ -25,4 +27,5 @@ const postSchema = new mongoose.Schema({
     timestamps: true,
 });
 
-mongoose.export = mongoose.model("Post", postSchema);
+const Post = mongoose.model("Post", postSchema);
+module.exports = Post;

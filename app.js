@@ -6,7 +6,8 @@ const cors = require('cors')
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
-const userRouter = require('./routes/api/user')
+const userRouter = require('./routes/api/user');
+const postRouter = require('./routes/api/post');
 
 dotenv.config();
 app.use(express.json())
@@ -17,6 +18,7 @@ app.use(cors());
 app.use(morgan('dev'));
 
 app.use("/user", userRouter);
+app.use("/post", postRouter);
 
 app.use((req, res, next) => {
     const error = new Error('Not found');
